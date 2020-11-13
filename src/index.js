@@ -1,3 +1,4 @@
+import GitHubData from "./models/index";
 document.getElementById("app").innerHTML = `
 <h1>Hello Vanilla!</h1>
 <div>
@@ -6,3 +7,13 @@ document.getElementById("app").innerHTML = `
   <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
 </div>
 `;
+window.addEventListener("load", () => {
+  console.log("do i");
+  const gitHubData = new GitHubData();
+  gitHubData.getUserData();
+});
+// window.addEventListener("click", () => {
+//   console.log("do i");
+//   const gitHubData = new GitHubData();
+//   gitHubData.getUserData();
+// });
