@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+::root {
+  --black: #000;
+  --white: #fff;
+}
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +13,58 @@ html {
 }
 body {
   box-sizing: border-box;
-  font-family: "DM Serif Display", serif;
+  font-family: 'DM Serif Display', serif;
+  display: relative;
+}
+.loader-parent {
+  width: 0;
+}
+.header {
+  padding: 1rem;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+}
+.github-logo {
+  width: 3rem;
+  top: 0.5rem;
+  position: absolute;
+}
+.header-input {
+  background-color: inherit;
+  color: inherit;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  display: inline;
+  height: 3rem;
+  margin-left: 4rem;
+}
+.header-navigation {
+  margin-left: 1rem;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 49%;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.github-info,
+.github-user {
+  display: flex;
+  justify-content: space-around;
+}
+.github-user {
+  grid-column: -1;
+  font-size: 2rem;
+}
+.github-user > *,
+.github-info > * {
+  margin-right: 1rem;
+}
+.mini-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }
 
 

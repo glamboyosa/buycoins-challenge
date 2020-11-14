@@ -1,1 +1,1 @@
-export const githubKey = "";
+export const githubKey = process.env.gitHubKey;
