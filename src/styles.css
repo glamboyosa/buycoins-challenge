@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
-::root {
+:root {
   --black: #000;
   --white: #fff;
+  --grey: #e1e4e8;
 }
 * {
   margin: 0;
@@ -22,8 +23,8 @@ body {
 .header {
   padding: 1rem;
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: var(--black);
+  color: var(--white);
   font-size: 1rem;
 }
 .github-logo {
@@ -65,4 +66,26 @@ body {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
+}
+.dashboard-options {
+  font-size: 1.5rem;
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+}
+.dashboard-options-content {
+  margin-right: 2rem;
+  display: flex;
+}
+.dashboard-options-content > * {
+  margin-right: 1rem;
+}
+.dashboard-options-content span {
+  background-color: var(--grey);
+  border-radius: 0.8rem;
+  padding: 0.1rem;
 }
