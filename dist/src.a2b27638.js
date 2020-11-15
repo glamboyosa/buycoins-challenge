@@ -1908,7 +1908,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.githubKey = void 0;
-var githubKey = "bb70fa9983ce8c6d4f2d7c71ef71edde97336c1b";
+var githubKey = "";
 exports.githubKey = githubKey;
 },{}],"src/models/index.js":[function(require,module,exports) {
 "use strict";
@@ -2010,7 +2010,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51540" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49652" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

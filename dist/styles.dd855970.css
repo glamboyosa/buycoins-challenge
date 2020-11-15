@@ -17,10 +17,20 @@ html {
 body {
   box-sizing: border-box;
   font-family: 'DM Serif Display', serif;
-  display: relative;
+  position: relative;
 }
 .loader-parent {
   width: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#checkbox {
+  display: none;
+}
+.mobile-nav {
+  opacity: 0;
 }
 .header {
   padding: 1rem;
@@ -35,20 +45,18 @@ body {
   position: absolute;
 }
 .header-input {
-  background-color: inherit;
-  color: inherit;
+  background-color: var(--black);
+  color: var(--white);
   padding: 1rem 2rem;
   border-radius: 0.8rem;
-  display: inline;
+  display: inline-block;
   height: 3rem;
   margin-left: 4rem;
   border: 1px solid var(--grey);
 }
 .header-navigation {
   margin-left: 1rem;
-  display: inline-grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 49%;
+  display: inline-flex;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -58,7 +66,9 @@ body {
   justify-content: space-around;
 }
 .github-user {
-  grid-column: -1;
+  position: absolute;
+  right: 0;
+  top: 1rem;
   font-size: 2rem;
 }
 .github-user > *,
@@ -115,12 +125,10 @@ body {
 .github-name {
   font-weight: bolder;
   font-size: 2.5rem;
-  margin-left: -10rem;
 }
 .github-username {
   font-size: 1.5rem;
   font-weight: lighter;
-  margin-left: -24rem;
 }
 .github-bio {
   font-size: 1.5rem;
@@ -201,6 +209,73 @@ body {
   height: 1rem;
   background-color: var(--js-yellow);
   border-radius: 50%;
+}
+@media only screen and (max-width: 800px) {
+  .header-navigation {
+    display: none;
+  }
+  .mobile-nav {
+    opacity: 1;
+    width: 3rem;
+    height: 2px;
+    background-color: var(--white);
+    display: inline-block;
+  }
+  .mobile-nav::before,
+  .mobile-nav::after {
+    content: '';
+    position: absolute;
+    width: 3rem;
+    height: 2px;
+    background-color: var(--white);
+  }
+  .mobile-nav::before {
+    top: 1rem;
+  }
+  .mobile-nav::after {
+    top: 2.5rem;
+  }
+  #checkbox:checked ~ .header-navigation {
+    display: block;
+    margin-top: 4rem;
+  }
+  .dashboard {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .github-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .github-info > * {
+    margin-top: 1rem;
+  }
+
+  .github-logo {
+    left: 50%;
+  }
+  .github-repo {
+    width: 100%;
+  }
+  .header-input {
+    display: none;
+  }
+  .github-user {
+    position: inherit;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .dashboard-content,
+  .dashboard-sidebar {
+    width: 100%;
+  }
+  .dashboard-options {
+    font-size: 1.2rem;
+  }
 }
 
 
