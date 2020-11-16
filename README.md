@@ -1,2 +1,3 @@
 # buycoins-challenge
-Created with CodeSandbox
+
+my solution to the Buycoins challenge
