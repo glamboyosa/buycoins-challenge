@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 :root {
   --black: #000;
   --white: #fff;
@@ -16,7 +16,7 @@ html {
 }
 body {
   box-sizing: border-box;
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Karla', sans-serif;
   position: relative;
 }
 .loader-parent {
