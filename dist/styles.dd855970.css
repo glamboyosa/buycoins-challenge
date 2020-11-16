@@ -207,7 +207,7 @@ body {
   height: 1rem;
   border-radius: 50%;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 85f0px) {
   .header-navigation {
     display: none;
   }
