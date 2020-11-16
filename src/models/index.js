@@ -1,21 +1,20 @@
-import axios from "axios";
-import { githubKey } from "../helpers/config";
+import axios from 'axios';
+import { githubKey } from '../helpers/config';
 export default class GitHubData {
   constructor() {
     this.state = {
       loading: true,
       error: null,
       profileData: null,
-      repositoryData: null
+      repositoryData: null,
     };
   }
 
-  getUserData() {
-    const requestBody = {
+  async getUserData() {
+    const repositoriesRequestBody = {
       query: `
       query{
   viewer {
-    login
     repositories(last: 20) {
       nodes {
         name
@@ -25,7 +24,6 @@ export default class GitHubData {
           edges {
             node {
               forkCount
-              openGraphImageUrl
             }
           }
         }
@@ -37,17 +35,43 @@ export default class GitHubData {
     }
   }
 }
-`
+`,
     };
-    axios
-      .post("https://api.github.com/graphql", requestBody, {
-        headers: {
-          Authorization: `bearer ${githubKey}`
+    const profileRequestBody = {
+      query: `
+    query{
+      viewer {
+        login
+    bio
+        name
+        avatarUrl
         }
-      })
-      .then((resp) => {
-        console.log(resp.data);
-      })
-      .catch((err) => console.log(err));
+      }
+    `,
+    };
+
+    try {
+      const resp = await axios.all([
+        axios.post('https://api.github.com/graphql', repositoriesRequestBody, {
+          headers: {
+            Authorization: `bearer ${githubKey}`,
+          },
+        }),
+        axios.post('https://api.github.com/graphql', profileRequestBody, {
+          headers: {
+            Authorization: `bearer ${githubKey}`,
+          },
+        }),
+      ]);
+      const [repositoriesResp, profileResp] = resp;
+      this.state = {
+        ...this.state,
+        loading: false,
+        profileData: profileResp.data.data.viewer,
+        repositoryData: repositoriesResp.data.data.viewer.repositories.nodes,
+      };
+    } catch (err) {
+      this.state = { ...this.state, error: err.message, loading: false };
+    }
   }
 }
