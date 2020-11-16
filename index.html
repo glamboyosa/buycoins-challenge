@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="loader-parent"></div>
+    <div class="loader-parent" style="display: none"></div>
     <header class="header">
       <input type="checkbox" name="checkbox" id="checkbox" />
       <label for="checkbox" class="mobile-nav"></label>
@@ -70,87 +70,19 @@
       </div>
     </div>
     <main class="dashboard">
-      <aside class="dashboard-sidebar">
-        <img
-          src="https://avatars1.githubusercontent.com/u/42815369?u=58c9c15ef794ab6b0f32ada5c2e5fd8400ae399c&v=4"
-          class="huge-avatar"
-        />
-
-        <div class="github-name">Timothy Ogbemudia</div>
-        <div class="github-username">glamboyosa</div>
-        <div class="github-bio">&nbsp;</div>
-      </aside>
+      <aside class="dashboard-sidebar"></aside>
       <div class="dashboard-content">
         <input
           class="dashboard-content-search"
           type="text"
+          style="visibility: hidden"
           placeholder="Find a repository..."
         />
-        <p class="dashboard-content-number">
+        <p class="dashboard-content-number" style="visibility: hidden">
           20 results for public repositories
         </p>
         <div class="github-repos">
-          <div class="github-repo">
-            <div class="github-repo-name">
-              <h3>react-native-news</h3>
-              <button>
-                <i class="icon ion-md-star"></i>
-                <span>Star</span>
-              </button>
-            </div>
-            <div class="github-repo-description">
-              A React Native news application with offline bookmarking
-              functionality
-            </div>
-            <div class="github-repo-stats">
-              <div class="github-repo-language">
-                <span>&nbsp;</span>
-                <p>JavaScript</p>
-              </div>
-              <div class="github-repo-stars">
-                <i class="icon ion-md-star"></i>
-                <p>1</p>
-              </div>
-              <div class="github-repo-forks">
-                <img
-                  src="./assets/icons8-compare-git-30.png"
-                  alt="github-compare"
-                />
-                <p>0</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="github-repo">
-            <div class="github-repo-name">
-              <h3>KnowNime-Server</h3>
-              <button>
-                <i class="icon ion-md-star"></i>
-                <span>Star</span>
-              </button>
-            </div>
-            <div class="github-repo-description">
-              Server powering the KnowNime application
-            </div>
-            <div class="github-repo-stats">
-              <div class="github-repo-language">
-                <span>&nbsp;</span>
-                <p>JavaScript</p>
-              </div>
-              <div class="github-repo-stars">
-                <i class="icon ion-md-star"></i>
-                <p>1</p>
-              </div>
-              <div class="github-repo-forks">
-                <img
-                  src="./assets/icons8-compare-git-30.png"
-                  alt="github-compare"
-                />
-                <p>0</p>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </main>
     <script src="src/index.js"></script>

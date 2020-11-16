@@ -868,7 +868,55 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{}],"src/helpers/config.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.maincContentParent = exports.sideBarParent = exports.loaderParent = exports.githubKey = void 0;
+var githubKey = "97879c11360e1332bc0e3a9803df3997218f3f6c";
+exports.githubKey = githubKey;
+var loaderParent = document.querySelector('.loader-parent');
+exports.loaderParent = loaderParent;
+var sideBarParent = document.querySelector('.dashboard-sidebar');
+exports.sideBarParent = sideBarParent;
+var maincContentParent = document.querySelector('.github-repos');
+exports.maincContentParent = maincContentParent;
+},{}],"src/helpers/clearLoader.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _config = require("./config");
+
+var _default = function _default() {
+  _config.loaderParent.parentElement.removeChild(_config.loaderParent);
+};
+
+exports.default = _default;
+},{"./config":"src/helpers/config.js"}],"src/helpers/renderLoader.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _config = require("./config");
+
+var _default = function _default() {
+  var loader = "\n    \n<svg width=\"55\" height=\"80\" viewBox=\"0 0 55 80\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"#034245\">\n<g transform=\"matrix(1 0 0 -1 0 80)\">\n    <rect width=\"10\" height=\"20\" rx=\"3\">\n        <animate attributeName=\"height\"\n             begin=\"0s\" dur=\"4.3s\"\n             values=\"20;45;57;80;64;32;66;45;64;23;66;13;64;56;34;34;2;23;76;79;20\" calcMode=\"linear\"\n             repeatCount=\"indefinite\" />\n    </rect>\n    <rect x=\"15\" width=\"10\" height=\"80\" rx=\"3\">\n        <animate attributeName=\"height\"\n             begin=\"0s\" dur=\"2s\"\n             values=\"80;55;33;5;75;23;73;33;12;14;60;80\" calcMode=\"linear\"\n             repeatCount=\"indefinite\" />\n    </rect>\n    <rect x=\"30\" width=\"10\" height=\"50\" rx=\"3\">\n        <animate attributeName=\"height\"\n             begin=\"0s\" dur=\"1.4s\"\n             values=\"50;34;78;23;56;23;34;76;80;54;21;50\" calcMode=\"linear\"\n             repeatCount=\"indefinite\" />\n    </rect>\n    <rect x=\"45\" width=\"10\" height=\"30\" rx=\"3\">\n        <animate attributeName=\"height\"\n             begin=\"0s\" dur=\"2s\"\n             values=\"30;45;13;80;56;72;45;76;34;23;67;30\" calcMode=\"linear\"\n             repeatCount=\"indefinite\" />\n    </rect>\n    <rect x=\"15\" width=\"10\" height=\"80\" rx=\"3\">\n        <animate attributeName=\"height\"\n             begin=\"0s\" dur=\"2s\"\n             values=\"80;55;33;5;75;23;73;33;12;14;60;80\" calcMode=\"linear\"\n             repeatCount=\"indefinite\" />\n    </rect>\n</g>\n</svg>\n    ";
+  _config.loaderParent.style.display = 'block';
+
+  _config.loaderParent.insertAdjacentHTML('beforeend', loader);
+};
+
+exports.default = _default;
+},{"./config":"src/helpers/config.js"}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -2652,22 +2700,7 @@ module.exports.default = axios;
 
 },{"./utils":"node_modules/axios/lib/utils.js","./helpers/bind":"node_modules/axios/lib/helpers/bind.js","./core/Axios":"node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"node_modules/axios/lib/core/mergeConfig.js","./defaults":"node_modules/axios/lib/defaults.js","./cancel/Cancel":"node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"node_modules/axios/lib/helpers/spread.js"}],"node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"src/helpers/config.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.maincContentParent = exports.sideBarParent = exports.loaderParent = exports.githubKey = void 0;
-var githubKey = "8bc220f5e60c0a815909a6c40e0f108bef0b8a65";
-exports.githubKey = githubKey;
-var loaderParent = document.querySelector('.loader-parent');
-exports.loaderParent = loaderParent;
-var sideBarParent = document.querySelector('.dashboard-sidebar');
-exports.sideBarParent = sideBarParent;
-var maincContentParent = document.querySelector('.github-repos');
-exports.maincContentParent = maincContentParent;
-},{}],"src/models/index.js":[function(require,module,exports) {
+},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"src/models/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2732,7 +2765,7 @@ var GitHubData = /*#__PURE__*/function () {
             switch (_context.prev = _context.next) {
               case 0:
                 repositoriesRequestBody = {
-                  query: "\n      query{\n  viewer {\n    repositories(last: 20) {\n      nodes {\n        name\n        stargazerCount\n        description\n        forks(first: 20) {\n          edges {\n            node {\n              forkCount\n            }\n          }\n        }\n        primaryLanguage {\n          color\n          name\n        }\n      }\n    }\n  }\n}\n"
+                  query: "\n      query{\n  viewer {\n    repositories(last: 20) {\n      nodes {\n        name\n        stargazerCount\n        description\n        forks(first: 20) {\n          totalCount\n        }\n        primaryLanguage {\n          color\n          name\n        }\n      }\n    }\n  }\n}\n"
                 };
                 profileRequestBody = {
                   query: "\n    query{\n      viewer {\n        login\n    bio\n        name\n        avatarUrl\n        }\n      }\n    "
@@ -2788,12 +2821,51 @@ var GitHubData = /*#__PURE__*/function () {
 }();
 
 exports.default = GitHubData;
-},{"axios":"node_modules/axios/index.js","../helpers/config":"src/helpers/config.js"}],"src/index.js":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js","../helpers/config":"src/helpers/config.js"}],"src/views/renderUI.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.renderMainContentLogic = exports.renderSidebar = void 0;
+
+var _config = require("../helpers/config");
+
+var renderSidebar = function renderSidebar(data) {
+  var markup = "\n<img\nsrc=".concat(data.avatarUrl, "\nclass=\"huge-avatar\"\n/>\n\n<div class=\"github-name\">").concat(data.name, "</div>\n<div class=\"github-username\">").concat(data.login, "</div>\n<div class=\"github-bio\">").concat(data.bio.length > 1 ? data.bio : '&nbsp;', "</div>\n");
+
+  _config.sideBarParent.insertAdjacentHTML('beforeend', markup);
+};
+
+exports.renderSidebar = renderSidebar;
+
+var renderMainContent = function renderMainContent(data) {
+  var _data$description;
+
+  var markup = "\n<div class=\"github-repo\">\n<div class=\"github-repo-name\">\n  <h3>".concat(data.name, "</h3>\n  <button>\n    <i class=\"icon ion-md-star\"></i>\n    <span>Star</span>\n  </button>\n</div>\n<div class=\"github-repo-description\">\n  ").concat((_data$description = data.description) !== null && _data$description !== void 0 ? _data$description : '&nbsp;', "\n</div>\n<div class=\"github-repo-stats\">\n  <div class=\"github-repo-language\">\n    <span style=\"background-color: ").concat(data.primaryLanguage ? data.primaryLanguage.color : '#000', "; \">&nbsp;</span>\n    <p>").concat(data.primaryLanguage ? data.primaryLanguage.name : 'no name', "</p>\n  </div>\n  <div class=\"github-repo-stars\">\n    <i class=\"icon ion-md-star\"></i>\n    <p>").concat(data.stargazerCount, "</p>\n  </div>\n  <div class=\"github-repo-forks\">\n  <i class=\"icon ion-md-attach\"></i>\n    <p>").concat(data.forks.totalCount, "</p>\n  </div>\n</div>\n</div>\n");
+  document.querySelector('.dashboard-content-number').style.visibility = 'visible';
+  document.querySelector('.dashboard-content-search').style.visibility = 'visible';
+
+  _config.maincContentParent.insertAdjacentHTML('afterbegin', markup);
+};
+
+var renderMainContentLogic = function renderMainContentLogic(data) {
+  data.forEach(renderMainContent);
+};
+
+exports.renderMainContentLogic = renderMainContentLogic;
+},{"../helpers/config":"src/helpers/config.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 require("regenerator-runtime/runtime");
 
+var _clearLoader = _interopRequireDefault(require("./helpers/clearLoader"));
+
+var _renderLoader = _interopRequireDefault(require("./helpers/renderLoader"));
+
 var _index = _interopRequireDefault(require("./models/index"));
+
+var _renderUI = require("./views/renderUI");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2808,18 +2880,25 @@ window.addEventListener('load', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/reg
       switch (_context.prev = _context.next) {
         case 0:
           gitHubData = new _index.default();
-          console.log(gitHubData.state);
+          (0, _renderLoader.default)();
           _context.next = 4;
           return gitHubData.getUserData();
 
         case 4:
+          if (!gitHubData.state.loading && gitHubData.state.profileData) {
+            (0, _clearLoader.default)();
+            (0, _renderUI.renderSidebar)(gitHubData.state.profileData);
+            (0, _renderUI.renderMainContentLogic)(gitHubData.state.repositoryData);
+          }
+
+        case 5:
         case "end":
           return _context.stop();
       }
     }
   }, _callee);
 })));
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","./models/index":"src/models/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","./helpers/clearLoader":"src/helpers/clearLoader.js","./helpers/renderLoader":"src/helpers/renderLoader.js","./models/index":"src/models/index.js","./views/renderUI":"src/views/renderUI.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2847,7 +2926,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59062" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60758" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

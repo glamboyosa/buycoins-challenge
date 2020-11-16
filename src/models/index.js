@@ -21,11 +21,7 @@ export default class GitHubData {
         stargazerCount
         description
         forks(first: 20) {
-          edges {
-            node {
-              forkCount
-            }
-          }
+          totalCount
         }
         primaryLanguage {
           color

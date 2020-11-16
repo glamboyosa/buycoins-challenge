@@ -3,7 +3,7 @@ import { loaderParent } from './config';
 export default () => {
   const loader = `
     
-<svg width="55" height="80" viewBox="0 0 55 80" xmlns="http://www.w3.org/2000/svg" fill="#FFF">
+<svg width="55" height="80" viewBox="0 0 55 80" xmlns="http://www.w3.org/2000/svg" fill="#034245">
 <g transform="matrix(1 0 0 -1 0 80)">
     <rect width="10" height="20" rx="3">
         <animate attributeName="height"
@@ -38,5 +38,6 @@ export default () => {
 </g>
 </svg>
     `;
-  loaderParent.insertAdjacentElement('beforeend', loader);
+  loaderParent.style.display = 'block';
+  loaderParent.insertAdjacentHTML('beforeend', loader);
 };
